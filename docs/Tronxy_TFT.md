@@ -100,6 +100,10 @@ The host module has to match the firmware. Either:
 As usual with Klipper, build the MCU firmware from the same Klipper
 version that runs on the host.
 
+After installing or updating the module, restart the Klipper service
+(for example `sudo systemctl restart klipper`). A plain `RESTART`
+keeps already loaded Python modules and would run the old code.
+
 If the MCU firmware does not contain the display commands (for example
 after flashing plain Klipper), the module only logs a warning and stays
 inactive, Klipper starts normally.
