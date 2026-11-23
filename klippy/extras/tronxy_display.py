@@ -20,6 +20,7 @@ UPDATE_TIME = 1.
 FILL_FMT = "tronxy_tft_fill x=%hu y=%hu w=%hu h=%hu color=%hu"
 TEXT_FMT = "tronxy_tft_text x=%hu y=%hu scale=%c fg=%hu bg=%hu text=%*s"
 LIGHT_FMT = "tronxy_tft_backlight on=%c"
+TOUCH_FMT = "tronxy_tft_touch x=%hu y=%hu z=%hu"
 
 
 def rgb(r, g, b):
@@ -143,7 +144,6 @@ class TronxyDisplay:
         self.cmd_queue = self.mcu.alloc_command_queue()
         self.fill_cmd = self.text_cmd = self.light_cmd = None
         self.mcu.register_config_callback(self._build_config)
-        self.mcu.register_response(self._handle_touch_bg, "tronxy_tft_touch")
         printer.register_event_handler("klippy:ready", self._handle_ready)
         printer.register_event_handler("klippy:shutdown",
                                        self._handle_shutdown)
@@ -178,6 +178,13 @@ class TronxyDisplay:
         self.fill_cmd = self.mcu.lookup_command(FILL_FMT, cq=cq)
         self.text_cmd = self.mcu.lookup_command(TEXT_FMT, cq=cq)
         self.light_cmd = self.mcu.lookup_command(LIGHT_FMT, cq=cq)
+        if hasattr(self.mcu, 'register_serial_response'):
+            # Klipper v0.14.0 and later
+            self.mcu.register_serial_response(self._handle_touch_bg,
+                                              TOUCH_FMT)
+        else:
+            self.mcu.register_response(self._handle_touch_bg,
+                                       TOUCH_FMT.split()[0])
 
     def _active(self):
         return self.fill_cmd is not None
