@@ -8,9 +8,7 @@ I2C, so none of the existing display drivers fit.
 
 ![Stock screen running Klipper on a Tronxy X5SA Pro](img/tronxy-tft-photo.jpg)
 
-*Running on a Tronxy X5SA Pro (German UI). The panel is a TN type;
-seen from above, mid-tone colors look much lighter than intended, see
-[known limitations](#known-limitations).*
+*Running on a Tronxy X5SA Pro (German UI), photo taken straight on.*
 
 ![Simulated screens: ready, printing, cancel confirmation, shutdown](img/tronxy-tft-screens.png)
 
@@ -153,10 +151,9 @@ macros shipped with Mainsail or Fluidd.
 ## Known limitations
 
 * Tested on one printer only.
-* The panel is a TN type. Seen from above (the usual angle on the
-  X5SA), mid-tone colors look much lighter than intended and white
-  text on colored buttons becomes hard to read. Saturated colors and
-  dark backgrounds are not affected.
+* The panel is a TN type. Viewed straight on the colors are fine, but
+  seen from above, mid-tone colors look much lighter than intended and
+  white text on colored buttons becomes harder to read.
 * Only the status page exists: no menus, no file selection.
 * While the host is not connected the boot screen ("Waiting for
   Klipper...") stays. If the host stops, the last screen stays.
