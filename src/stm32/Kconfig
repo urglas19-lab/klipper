@@ -556,4 +556,18 @@ config STM32_CANBUS_PH13_PH14
     bool
     default y if STM32_MMENU_CANBUS_PH13_PH14 || STM32_CMENU_CANBUS_PH13_PH14
 
+config TRONXY_TFT
+    bool "Tronxy stock TFT (ILI9488 on FMC + XPT2046 touch)"
+    depends on MACH_STM32F446
+    default n
+    help
+        Drive the stock 480x320 touch screen of Tronxy printers with the
+        TRONXY_F446 mainboard (e.g. X5SA Pro). The user interface is drawn
+        by the host module klippy/extras/tronxy_display.py.
+
+config TRONXY_TFT_SPLASH_DE
+    bool "Tronxy stock TFT: German boot screen text"
+    depends on TRONXY_TFT
+    default n
+
 endif

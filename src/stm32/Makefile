@@ -109,3 +109,5 @@ flash: $(OUT)klipper.bin lib/hidflash/hid-flash
 serialflash: $(OUT)klipper.bin
 	@echo "  Flashing $< to $(FLASH_DEVICE) via stm32flash"
 	$(Q)stm32flash -w $< -v -g 0 $(FLASH_DEVICE)
+
+src-$(CONFIG_TRONXY_TFT) += stm32/tronxy_tft.c
