@@ -1,5 +1,10 @@
 Welcome to the Klipper project!
 
+> **About this fork:** it adds support for the stock touch screen of
+> Tronxy printers with the TRONXY_F446 board (e.g. X5SA Pro), see
+> [docs/Tronxy_TFT.md](docs/Tronxy_TFT.md). Everything else is
+> upstream Klipper.
+
 [![Klipper](docs/img/klipper-logo-small.png)](https://www.klipper3d.org/)
 
 https://www.klipper3d.org/
